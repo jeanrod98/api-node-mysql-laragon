@@ -12,7 +12,7 @@ export const checkAuth = (req, res, next) => {
     if (token[0] === "Bearer") {
       try {
         // valida que el token sea valido
-        if (jwt.verify(token[1], "palabra_secreta")) next();
+        if (jwt.verify(token[1], process.env.SECRET)) next();
       } catch (error) {
         return res.json({
           msg: "Accesso Denegado: token invalido",
